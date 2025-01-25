@@ -2,3 +2,11 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+td {
+  border: 1px solid black;
+}
+
+td:hover {
+  background-color: azure;
+}

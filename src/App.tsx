@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { SearchBar } from './SearchBar'
+import { CompaniesDashboard } from './CompaniesDashboard'
 
 interface ESG_Score {
   date: string
@@ -7,9 +8,9 @@ interface ESG_Score {
   social: number
   governance: number
 }
-interface Company {
+export interface Company {
   company: string
-  esg_score: [ESG_Score]
+  esg_score: Array<ESG_Score>
 }
 
 function App() {
@@ -27,7 +28,15 @@ function App() {
   return (
     <div className="app">
       <SearchBar onChange={(searchTerm) => setSearchedCompanies(searchTerm)} />
-      {searchedCompanies}
+      <CompaniesDashboard>
+        {companies
+          .map(({ company }) => company)
+          .filter((company) =>
+            company
+              .toLocaleLowerCase()
+              .includes(searchedCompanies.trim().toLocaleLowerCase()),
+          )}
+      </CompaniesDashboard>
     </div>
   )
 }

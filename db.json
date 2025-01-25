@@ -1,7 +1,7 @@
 {
   "companies": [
     {
-      "company": "Company A",
+      "company": "Apple",
       "esg_scores": [
         {
           "date": "2023-01-01",
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "company": "Company B",
+      "company": "Tesla",
       "esg_scores": [
         {
           "date": "2023-01-01",
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "company": "Company C",
+      "company": "Man Group",
       "esg_scores": [
         {
           "date": "2023-01-01",

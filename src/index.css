@@ -10,3 +10,12 @@ td {
 td:hover {
   background-color: azure;
 }
+
+.search-and-dashboard-wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.search-bar h2 {
+  margin-top: 0px;
+}

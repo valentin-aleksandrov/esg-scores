@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { SearchBar } from './SearchBar'
 import { CompaniesDashboard } from './CompaniesDashboard'
+import { AppTitle } from './AppTitle'
 
 interface ESG_Score {
   date: string
@@ -15,7 +16,7 @@ export interface Company {
 
 function App() {
   const [companies, setCompanies] = useState<Array<Company>>([])
-  const [searchedCompanies, setSearchedCompanies] = useState('')
+  const [companiesSearchTerm, setCompaniesSearchTerm] = useState('')
 
   useEffect(() => {
     fetch('http://localhost:3000/companies')
@@ -25,18 +26,28 @@ function App() {
       })
   }, [companies])
 
+  const handleSearchBarChange = useCallback(
+    (searchTerm: string) => setCompaniesSearchTerm(searchTerm),
+    [],
+  )
+
+  const dashboardCompanies = useMemo(() => {
+    return companies
+      .map(({ company }) => company)
+      .filter((company) =>
+        company
+          .toLocaleLowerCase()
+          .includes(companiesSearchTerm.trim().toLocaleLowerCase()),
+      )
+  }, [companies, companiesSearchTerm])
+
   return (
     <div className="app">
-      <SearchBar onChange={(searchTerm) => setSearchedCompanies(searchTerm)} />
-      <CompaniesDashboard>
-        {companies
-          .map(({ company }) => company)
-          .filter((company) =>
-            company
-              .toLocaleLowerCase()
-              .includes(searchedCompanies.trim().toLocaleLowerCase()),
-          )}
-      </CompaniesDashboard>
+      <AppTitle />
+      <div className="search-and-dashboard-wrapper">
+        <SearchBar onChange={handleSearchBarChange} />
+        <CompaniesDashboard>{dashboardCompanies}</CompaniesDashboard>
+      </div>
     </div>
   )
 }

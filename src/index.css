@@ -1,25 +1,30 @@
 .app {
   margin-left: 10px;
   margin-right: 10px;
-}
 
-td {
-  border: 1px solid black;
-}
+  --table-td-border-color: black;
+  --table-td-hover-background-color: azure;
+  --table-td-active-background-color: greenyellow;
 
-td:hover {
-  background-color: azure;
-}
+  td {
+    border: 1px solid var(--table-td-border-color);
+  }
 
-.companies-container {
-  display: flex;
-  gap: 30px;
-}
+  td:hover {
+    background-color: var(--table-td-hover-background-color);
+  }
 
-.search-bar h2 {
-  margin-top: 0px;
-}
+  .companies-container {
+    display: flex;
+    gap: 30px;
+  }
 
-.company-dashboard-table {
-  width: 250px;
+  .company-dashboard-table {
+    width: 250px;
+
+    .active,
+    .active td:hover {
+      background-color: greenyellow;
+    }
+  }
 }

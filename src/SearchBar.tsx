@@ -9,7 +9,7 @@ export const SearchBar = ({ onChange }: SearchBarProps) => {
     onChange(e.target.value)
   }
   return (
-    <div className="search-bar">
+    <div>
       <h2>Search</h2>
       <input onChange={useCallback(changeHandler, [onChange])} />
     </div>

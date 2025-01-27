@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react'
 import { SearchBar } from './SearchBar'
 import { CompaniesDashboard } from './CompaniesDashboard'
 import { AppTitle } from './AppTitle'
+import { CompanyDetails } from './CompanyDetails'
 
 interface ESG_Score {
   date: string
@@ -15,6 +16,9 @@ export interface Company {
 }
 
 function App() {
+  const [companyToBeViewed, setCompanyToBeViewed] = useState<
+    Company | undefined
+  >()
   const [companies, setCompanies] = useState<Array<Company>>([])
   const [companiesSearchTerm, setCompaniesSearchTerm] = useState('')
 
@@ -28,7 +32,19 @@ function App() {
 
   const handleSearchBarChange = useCallback(
     (searchTerm: string) => setCompaniesSearchTerm(searchTerm),
-    [],
+    [setCompaniesSearchTerm],
+  )
+
+  const handleCompanyClick = useCallback(
+    (clickedCompany: string) => {
+      const foundCompany = companies.find(
+        ({ company }) => company === clickedCompany,
+      )
+      if (foundCompany) {
+        setCompanyToBeViewed(foundCompany)
+      }
+    },
+    [companies],
   )
 
   const dashboardCompanies = useMemo(() => {
@@ -46,7 +62,13 @@ function App() {
       <AppTitle />
       <div className="companies-container">
         <SearchBar onChange={handleSearchBarChange} />
-        <CompaniesDashboard>{dashboardCompanies}</CompaniesDashboard>
+        <CompaniesDashboard
+          activeCompany={companyToBeViewed?.company}
+          onCompanyClick={handleCompanyClick}
+        >
+          {dashboardCompanies}
+        </CompaniesDashboard>
+        {companyToBeViewed && <CompanyDetails {...companyToBeViewed} />}
       </div>
     </div>
   )

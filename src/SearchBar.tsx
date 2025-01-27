@@ -2,9 +2,10 @@ import { useCallback, useState } from 'react'
 
 interface SearchBarProps {
   onChange: (searchTerm: string) => void
+  disabled: boolean
 }
 
-export const SearchBar = ({ onChange }: SearchBarProps) => {
+export const SearchBar = ({ onChange, disabled }: SearchBarProps) => {
   const [value, setValue] = useState('')
   const changeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const newValue = e.target.value
@@ -20,7 +21,11 @@ export const SearchBar = ({ onChange }: SearchBarProps) => {
   return (
     <div className="search-bar">
       <h2>Search</h2>
-      <input value={value} onChange={useCallback(changeHandler, [onChange])} />
+      <input
+        disabled={disabled}
+        value={value}
+        onChange={useCallback(changeHandler, [onChange])}
+      />
       {value && (
         <button className="clear-btn" onClick={clearInput}>
           Clear

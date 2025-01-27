@@ -13,22 +13,26 @@ export const CompaniesDashboard = ({
   return (
     <div>
       <h2>Companies</h2>
-      <table className="company-dashboard-table">
-        <tbody>
-          {children.map((company) => {
-            const handleCompanyRowClick = () => onCompanyClick(company)
-            return (
-              <tr
-                className={classNames({ active: activeCompany === company })}
-                key={company}
-                onClick={handleCompanyRowClick}
-              >
-                <td>{company}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+      {children.length > 0 ? (
+        <table className="company-dashboard-table">
+          <tbody>
+            {children.map((company) => {
+              const handleCompanyRowClick = () => onCompanyClick(company)
+              return (
+                <tr
+                  className={classNames({ active: activeCompany === company })}
+                  key={company}
+                  onClick={handleCompanyRowClick}
+                >
+                  <td>{company}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <div>...Loading</div>
+      )}
     </div>
   )
 }

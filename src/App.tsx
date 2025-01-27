@@ -16,7 +16,9 @@ function App() {
     fetch('http://localhost:3000/companies')
       .then((res) => res.json())
       .then((receivedCompanies: Array<Company>) => {
-        setCompanies(receivedCompanies)
+        // This is used to simulate network latency
+        const artificialDelay = 3000
+        setTimeout(() => setCompanies(receivedCompanies), artificialDelay)
       })
   }, [])
 
@@ -51,7 +53,10 @@ function App() {
     <div className="app">
       <AppTitle />
       <div className="companies-container">
-        <SearchBar onChange={handleSearchBarChange} />
+        <SearchBar
+          disabled={dashboardCompanies.length === 0}
+          onChange={handleSearchBarChange}
+        />
         <CompaniesDashboard
           activeCompany={companyToBeViewed?.company}
           onCompanyClick={handleCompanyClick}

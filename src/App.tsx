@@ -25,10 +25,10 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:3000/companies')
       .then((res) => res.json())
-      .then((receivedCompanies: [Company]) => {
+      .then((receivedCompanies: Array<Company>) => {
         setCompanies(receivedCompanies)
       })
-  }, [companies])
+  }, [])
 
   const handleSearchBarChange = useCallback(
     (searchTerm: string) => setCompaniesSearchTerm(searchTerm),

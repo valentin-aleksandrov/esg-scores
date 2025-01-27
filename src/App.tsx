@@ -12,7 +12,7 @@ interface ESG_Score {
 }
 export interface Company {
   company: string
-  esg_score: Array<ESG_Score>
+  esg_scores: Array<ESG_Score>
 }
 
 function App() {

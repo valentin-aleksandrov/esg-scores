@@ -8,8 +8,7 @@ import {
   Tooltip,
   Legend,
 } from 'recharts'
-
-import { Company, ESG_Score } from './App'
+import { Company, ESG_Score } from './types'
 
 const sortESGResultsByDatesAsc = (resultsA: ESG_Score, resultsB: ESG_Score) => {
   return Number(new Date(resultsA.date)) - Number(new Date(resultsB.date))

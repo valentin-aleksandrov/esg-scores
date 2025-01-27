@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { Company, ESG_Score } from './App'
 import {
   LineChart,
   Line,
@@ -9,6 +8,8 @@ import {
   Tooltip,
   Legend,
 } from 'recharts'
+
+import { Company, ESG_Score } from './App'
 
 const sortESGResultsByDatesAsc = (resultsA: ESG_Score, resultsB: ESG_Score) => {
   return Number(new Date(resultsA.date)) - Number(new Date(resultsB.date))
@@ -23,7 +24,7 @@ export const CompanyDetails = ({ company, esg_scores }: Company) => {
     <div className="company-details">
       <h2>{company}</h2>
       <LineChart width={700} height={300} data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid strokeDasharray="5 5" />
         <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
@@ -35,7 +36,7 @@ export const CompanyDetails = ({ company, esg_scores }: Company) => {
           activeDot={{ r: 8 }}
         />
         <Line type="monotone" dataKey="governance" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="social" stroke="red" />
+        <Line type="monotone" dataKey="social" stroke="#ff0000" />
       </LineChart>
     </div>
   )

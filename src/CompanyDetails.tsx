@@ -20,7 +20,7 @@ export const CompanyDetails = ({ company, esg_scores }: Company) => {
     [esg_scores],
   )
   return (
-    <div>
+    <div className="company-details">
       <h2>{company}</h2>
       <LineChart width={700} height={300} data={data}>
         <CartesianGrid strokeDasharray="3 3" />

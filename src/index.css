@@ -17,6 +17,10 @@
     display: flex;
     gap: var(--company-container-gap);
 
+    .company-details h2 {
+      text-align: center;
+    }
+
     .search-bar .clear-btn {
       margin-top: var(--general-margin);
       display: block;

@@ -11,11 +11,15 @@ td:hover {
   background-color: azure;
 }
 
-.search-and-dashboard-wrapper {
+.companies-container {
   display: flex;
   gap: 30px;
 }
 
 .search-bar h2 {
   margin-top: 0px;
+}
+
+.company-dashboard-table {
+  width: 250px;
 }

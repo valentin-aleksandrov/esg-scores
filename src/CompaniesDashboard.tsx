@@ -3,7 +3,7 @@ interface CompaniesDashboardProps {
 }
 export const CompaniesDashboard = ({ children }: CompaniesDashboardProps) => {
   return (
-    <table>
+    <table className="company-dashboard-table">
       <thead>
         <tr>
           <th>Company Name</th>

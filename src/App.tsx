@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="app">
       <AppTitle />
-      <div className="search-and-dashboard-wrapper">
+      <div className="companies-container">
         <SearchBar onChange={handleSearchBarChange} />
         <CompaniesDashboard>{dashboardCompanies}</CompaniesDashboard>
       </div>

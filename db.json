@@ -11,9 +11,15 @@
         },
         {
           "date": "2022-06-01",
-          "environmental": 70,
-          "social": 78,
-          "governance": 65
+          "environmental": 50,
+          "social": 62,
+          "governance": 30
+        },
+        {
+          "date": "2022-12-01",
+          "environmental": 60,
+          "social": 68,
+          "governance": 55
         }
       ]
     },
@@ -31,6 +37,12 @@
           "environmental": 55,
           "social": 82,
           "governance": 78
+        },
+        {
+          "date": "2022-12-01",
+          "environmental": 90,
+          "social": 30,
+          "governance": 45
         }
       ]
     },
@@ -48,6 +60,12 @@
           "environmental": 88,
           "social": 85,
           "governance": 82
+        },
+        {
+          "date": "2022-12-01",
+          "environmental": 70,
+          "social": 80,
+          "governance": 90
         }
       ]
     }

@@ -4,7 +4,7 @@ import { CompaniesDashboard } from './CompaniesDashboard'
 import { AppTitle } from './AppTitle'
 import { CompanyDetails } from './CompanyDetails'
 
-interface ESG_Score {
+export interface ESG_Score {
   date: string
   environmental: number
   social: number

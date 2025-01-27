@@ -1,30 +1,44 @@
 .app {
-  margin-left: 10px;
-  margin-right: 10px;
+  --general-margin: 10px;
+  --company-container-gap: 30px;
+
+  margin-left: var(--general-margin);
+  margin-right: var(--general-margin);
 
   --table-td-border-color: black;
   --table-td-hover-background-color: azure;
   --table-td-active-background-color: greenyellow;
 
-  td {
-    border: 1px solid var(--table-td-border-color);
-  }
-
-  td:hover {
-    background-color: var(--table-td-hover-background-color);
+  h1 {
+    text-align: center;
   }
 
   .companies-container {
     display: flex;
-    gap: 30px;
-  }
+    gap: var(--company-container-gap);
 
-  .company-dashboard-table {
-    width: 250px;
+    .search-bar .clear-btn {
+      margin-top: var(--general-margin);
+      display: block;
+      cursor: pointer;
+    }
 
-    .active,
-    .active td:hover {
-      background-color: greenyellow;
+    .company-dashboard-table {
+      width: 250px;
+
+      td {
+        border: 1px solid var(--table-td-border-color);
+      }
+
+      td:hover {
+        background-color: var(--table-td-hover-background-color);
+        cursor: pointer;
+      }
+
+      .active,
+      .active td:hover {
+        background-color: var(--table-td-active-background-color);
+      }
     }
   }
 }

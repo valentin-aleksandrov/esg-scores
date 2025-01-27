@@ -1,17 +1,31 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
 interface SearchBarProps {
   onChange: (searchTerm: string) => void
 }
 
 export const SearchBar = ({ onChange }: SearchBarProps) => {
+  const [value, setValue] = useState('')
   const changeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    onChange(e.target.value)
+    const newValue = e.target.value
+    setValue(newValue)
+    onChange(newValue)
   }
+
+  const clearInput = () => {
+    setValue('')
+    onChange('')
+  }
+
   return (
-    <div>
+    <div className="search-bar">
       <h2>Search</h2>
-      <input onChange={useCallback(changeHandler, [onChange])} />
+      <input value={value} onChange={useCallback(changeHandler, [onChange])} />
+      {value && (
+        <button className="clear-btn" onClick={clearInput}>
+          Clear
+        </button>
+      )}
     </div>
   )
 }
